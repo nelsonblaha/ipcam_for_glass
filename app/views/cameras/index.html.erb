@@ -1,0 +1,35 @@
+<h1>Listing cameras</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Name</th>
+      <th>Privacy</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cameras.each do |camera| %>
+      <tr>
+        <td><%= camera.url %></td>
+        <td><%= camera.name %></td>
+        <td><%= camera.privacy %></td>
+        <td><%= camera.username %></td>
+        <td><%= camera.password %></td>
+        <td><%= link_to 'Show', camera %></td>
+        <td><%= link_to 'Edit', edit_camera_path(camera) %></td>
+        <td><%= link_to 'Destroy', camera, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Camera', new_camera_path %>
