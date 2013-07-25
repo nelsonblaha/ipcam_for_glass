@@ -37,3 +37,26 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'sendgrid'
+
+group :assets do
+  gem 'less-rails'
+  gem 'therubyracer', :platform=>:ruby
+  gem 'twitter-bootstrap-rails'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
+  gem 'hub', :require=>nil
+  gem 'quiet_assets'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+end
+
