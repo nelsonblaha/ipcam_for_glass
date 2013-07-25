@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CamerasControllerTest < ActionController::TestCase
   setup do
-    @camera = cameras(:one)
+    @camera = FactoryGirl.create(:camera)
   end
 
   test "should get index" do
