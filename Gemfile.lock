@@ -78,6 +78,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.5)
+    mirror-api (0.1.0)
+      hashie
+      json
+      rake
+      rest-client
     multi_json (1.7.7)
     multipart-post (1.2.0)
     oauth2 (0.8.1)
@@ -116,6 +121,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
     ref (1.0.5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.9)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -166,6 +173,7 @@ DEPENDENCIES
   hub
   jquery-rails
   less-rails
+  mirror-api
   omniauth
   omniauth-google-oauth2
   quiet_assets
