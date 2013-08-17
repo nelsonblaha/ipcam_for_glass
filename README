@@ -1,19 +1,11 @@
 Ipcam For Glass
 ========================
+Ruby on Rails
 
-This application was generated with the rails_apps_composer gem:
-https://github.com/RailsApps/rails_apps_composer
-provided by the RailsApps Project:
-http://railsapps.github.io/
+Glass is a registered trademark of Google, Inc.
 
-________________________
-
-Recipes:
-["apps4", "controllers", "core", "email", "extras", "frontend", "gems", "git", "init", "models", "prelaunch", "railsapps", "readme", "routes", "saas", "setup", "testing", "views"]
-
-Preferences:
-{:git=>true, :railsapps=>"none", :dev_webserver=>"webrick", :prod_webserver=>"same", :database=>"sqlite", :templates=>"erb", :unit_test=>"test_unit", :integration=>"rspec-capybara", :continuous_testing=>"none", :fixtures=>"factory_girl", :frontend=>"bootstrap", :bootstrap=>"less", :email=>"sendgrid", :authentication=>"omniauth", :omniauth_provider=>"google_oauth2", :authorization=>"none", :form_builder=>"none", :starter_app=>"none", :rvmrc=>true, :quiet_assets=>true, :local_env_file=>true, :better_errors=>true, :github=>true}
-
-________________________
+This program controlls Panasonic BL- series webcams with Google Glass' location and notifies Glass when the camera is toggled.
 
 License
+
+MIT
