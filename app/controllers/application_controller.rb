@@ -30,4 +30,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def check_admin
+      unless current_user.admin
+        redirect_to root_url
+      end
+    end
 end

@@ -9,12 +9,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'httparty'
 gem 'mirror-api'
 gem 'jquery-rails'
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'sendgrid'
+gem 'geocoder'
+
 group :assets do
   gem 'less-rails'
   gem 'therubyracer', :platform=>:ruby

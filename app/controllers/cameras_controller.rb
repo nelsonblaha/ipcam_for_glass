@@ -1,9 +1,13 @@
 class CamerasController < ApplicationController
-  before_action :set_camera, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, except: [:new,:create,:index]
 
   # GET /cameras
   def index
-    @cameras = Camera.all
+    if current_user
+      @cameras = current_user.cameras
+    else
+      @cameras = []
+    end
   end
 
   # GET /cameras/1
@@ -22,6 +26,7 @@ class CamerasController < ApplicationController
   # POST /cameras
   def create
     @camera = Camera.new(camera_params)
+    @camera.user_id = current_user.id
 
     if @camera.save
       redirect_to @camera, notice: 'Camera was successfully created.'
@@ -32,6 +37,7 @@ class CamerasController < ApplicationController
 
   # PATCH/PUT /cameras/1
   def update
+    @camera.user_id = current_user.id
     if @camera.update(camera_params)
       redirect_to @camera, notice: 'Camera was successfully updated.'
     else
@@ -46,13 +52,16 @@ class CamerasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_camera
-      @camera = Camera.find(params[:id])
-    end
 
     # Only allow a trusted parameter "white list" through.
     def camera_params
       params.require(:camera).permit(:url, :name, :privacy, :username, :password)
+    end
+
+    def check_owner
+      @camera = Camera.find(params[:id])
+      unless current_user && current_user == @camera.user
+        redirect_to root_url
+      end
     end
 end

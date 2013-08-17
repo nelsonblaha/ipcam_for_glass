@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130725223907) do
+ActiveRecord::Schema.define(version: 20130816234153) do
 
   create_table "cameras", force: true do |t|
     t.string   "url"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130725223907) do
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -28,8 +29,26 @@ ActiveRecord::Schema.define(version: 20130725223907) do
     t.string   "email"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "access_token"
+    t.string   "refresh_token"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "mirror_card_id"
+    t.boolean  "admin"
+  end
+
+  create_table "zones", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "camera_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "radius"
+    t.boolean  "triggered"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

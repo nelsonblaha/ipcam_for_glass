@@ -1,4 +1,6 @@
 IpcamForGlass::Application.routes.draw do
+  resources :zones
+
   root :to => 'cameras#index'
   
   # session

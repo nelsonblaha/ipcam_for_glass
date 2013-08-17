@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @zone.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @zone.user_id %>
+</p>
+
+<p>
+  <strong>Camera:</strong>
+  <%= @zone.camera_id %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @zone.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @zone.longitude %>
+</p>
+
+<p>
+  <strong>Radius:</strong>
+  <%= @zone.radius %>
+</p>
+
+<p>
+  <strong>Triggered:</strong>
+  <%= @zone.triggered %>
+</p>
+
+<%= link_to 'Edit', edit_zone_path(@zone) %> |
+<%= link_to 'Back', zones_path %>

@@ -1,0 +1,69 @@
+<%= form_for(@zone) do |f| %>
+  <% if @zone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@zone.errors.count, "error") %> prohibited this zone from being saved:</h2>
+
+      <ul>
+      <% @zone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=<%= GOOGLE_SIMPLE_API_KEY %>&sensor=false">
+  </script>
+
+  <% userloc = current_user.location %>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var mapOptions = {
+        center: new google.maps.LatLng(<%= @zone.latitude || userloc[0] %>,<%= @zone.longitude || userloc[1] %>),
+          zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+      circle = new google.maps.Circle({
+        center: new google.maps.LatLng(<%= @zone.latitude || userloc[0] %>,<%= @zone.longitude || userloc[1] %>),
+        radius: <%= @zone.radius || 200 %>,
+        editable: true,
+        map: map
+      });
+      $("div.actions input").click(function() {
+        $("div.field:eq(0) input").attr("value",circle.center.lat());
+        $("div.field:eq(1) input").attr("value",circle.center.lng());
+        $("div.field:eq(2) input").attr("value",circle.radius);
+      });
+    });
+  </script>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div id="map_canvas" style="width: 80%; height: 500px; margin-left:auto; margin-right:auto; "></div>
+  <%= image_tag 'https://s3.amazonaws.com/ifttt-latitude/powered-by-google-on-white.png', id: "google" %>
+
+  <div class="field">
+    <%= f.label "Camera" %><br />
+    <%= f.collection_select(:camera_id, current_user.cameras, :id, :name) %>
+    <%= link_to "create new", '/cameras/new' %>
+  </div>
+
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
+  <%= f.hidden_field :radius %>
+  
+  <div class="field">
+    <%= f.label :triggered %><br>
+    <%= f.check_box :triggered %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

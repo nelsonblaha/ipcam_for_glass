@@ -1,0 +1,39 @@
+<h1>Listing zones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Camera</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Radius</th>
+      <th>Triggered</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @zones.each do |zone| %>
+      <tr>
+        <td><%= zone.name %></td>
+        <td><%= zone.user_id %></td>
+        <td><%= zone.camera_id %></td>
+        <td><%= zone.latitude %></td>
+        <td><%= zone.longitude %></td>
+        <td><%= zone.radius %></td>
+        <td><%= zone.triggered %></td>
+        <td><%= link_to 'Show', zone %></td>
+        <td><%= link_to 'Edit', edit_zone_path(zone) %></td>
+        <td><%= link_to 'Destroy', zone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Zone', new_zone_path %>
